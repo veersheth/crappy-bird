@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:crappy_bird/widgets/Ground.dart';
 import 'package:crappy_bird/widgets/bird.dart';
+import 'package:crappy_bird/widgets/game_over.dart';
 import 'package:crappy_bird/widgets/tiles.dart';
 import 'package:flutter/material.dart';
 
@@ -60,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
           birdY = initialHeight - height;
           if (tileX[0] <= -1.8) {
             tileX.removeAt(0);
-            tileX.add(numTiles * 2);
+            tileX.add(numTiles * 1.8);
             tileY.removeAt(0);
             tileY.add(2 * Random().nextDouble() - 1);
           }
@@ -70,6 +71,7 @@ class _MainScreenState extends State<MainScreen> {
         });
 
         if (birdY >= 0.9 || checkCollision()) {
+          showDialog(context: context, builder: (context) => GameOver());
           timer.cancel();
           birdY = 0;
           time = 0;
