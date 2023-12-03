@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Bird extends StatelessWidget {
-  const Bird({super.key});
+  final double birdWidth;
+  final double birdHeight;
+  const Bird({super.key, required this.birdWidth, required this.birdHeight});
 
   @override
   Widget build(BuildContext context) {
@@ -10,8 +12,8 @@ class Bird extends StatelessWidget {
         color: Colors.yellow,
         borderRadius: BorderRadius.circular(100),
       ),
-      height: 55,
-      width: 55,
+      height: birdHeight,
+      width: birdWidth,
       alignment: Alignment.center,
       // child: const Text(
       //   "O∨O",
