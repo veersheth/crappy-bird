@@ -13,13 +13,13 @@ class Bird extends StatelessWidget {
       height: 55,
       width: 55,
       alignment: Alignment.center,
-      child: const Text(
-        "O∨O",
-        style: TextStyle(
-          fontSize: 15,
-          // fontWeight: FontWeight.bold,
-        ),
-      ),
+      // child: const Text(
+      //   "O∨O",
+      //   style: TextStyle(
+      //     fontSize: 15, color: Colors.white,
+      //     // fontWeight: FontWeight.bold,
+      //   ),
+      // ),
     );
   }
 }
