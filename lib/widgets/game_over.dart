@@ -38,13 +38,16 @@ class _GameOverState extends State<GameOver>
       builder: (ctx, child) => Transform.scale(
         scale: _sizeAnimation.value,
         child: AlertDialog(
-          title: Text("you died "),
+          backgroundColor: Colors.blue[100],
+          title: Center(child: Text("You Died")),
           actions: [
-            MaterialButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("restart?"),
+            Center(
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Restart"),
+              ),
             )
           ],
         ),
