@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:crappy_bird/widgets/Ground.dart';
 import 'package:crappy_bird/widgets/bird.dart';
 import 'package:crappy_bird/widgets/game_over.dart';
@@ -71,14 +70,8 @@ class _MainScreenState extends State<MainScreen> {
         });
 
         if (birdY >= 0.9 || checkCollision()) {
-          showDialog(context: context, builder: (context) => GameOver());
           timer.cancel();
-          birdY = 0;
-          time = 0;
-          initialHeight = birdY;
-          gameStarted = false;
-          tileX = [];
-          numTiles = 0;
+          resetGame();
           // jump();
         }
       });
@@ -86,6 +79,10 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   bool checkCollision() {
+    //////////////////////////////////////////////////////////////////////////////////
+    /////////////////////// still figuring this out //////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////
+
     // for (int i = 0; i < numTiles; i++) {
     //   // Check if the bird's position overlaps with the current tile's position
     //   bool condition1 = birdY + birdHeight / 2 > tileY[i] - tileHeight / 2;
@@ -102,7 +99,30 @@ class _MainScreenState extends State<MainScreen> {
     //     return true;
     //   }
     // }
+
     return false;
+  }
+
+  void resetGame() {
+    gameStarted = false; // Stop the game
+    showDialog(context: context, builder: (context) => const GameOver());
+    time = 0;
+    height = 0;
+    // birdY = -1; // Start birdY from 0
+    initialHeight = 0;
+    gameStarted = false;
+    tileX = [];
+    numTiles = 0;
+
+    Timer.periodic(Duration(milliseconds: 20), (timer) {
+      if (birdY > 0) {
+        setState(() {
+          birdY -= 0.05; // Increment birdY
+        });
+      } else {
+        timer.cancel();
+      }
+    });
   }
 
   @override
