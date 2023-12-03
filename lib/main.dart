@@ -1,3 +1,4 @@
+import 'package:crappy_bird/pages/main_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +10,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Crappy bird'),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
       ),
+      home: const MainScreen(),
     );
   }
 }
